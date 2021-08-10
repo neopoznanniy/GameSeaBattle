@@ -21,7 +21,7 @@ public class GameHelper {
         return inputLine.toLowerCase();
     }
 
-    public ArrayList<String> placeDotCom(int comSize){
+    public ArrayList<String> placeShip(int comSize){
         ArrayList<String> alphaCells = new ArrayList<String>();
         String[] alphacoords = new String[comSize];
         String temp = null;
@@ -49,7 +49,7 @@ public class GameHelper {
                         success=false;
                     }
                 }else{
-                    System.out.println("используется " +location);
+                    //System.out.println("используется " +location);
                     success = false;
                 }
             }

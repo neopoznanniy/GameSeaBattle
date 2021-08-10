@@ -21,10 +21,11 @@ public class Game {
             System.out.println("Ваша цель потопить три корабля.");
             System.out.println("Попытайтесь потопить их за минимальное количество ходов.");
             System.out.println("Пока они не разрушили вашу базу.");
+            System.out.println("В качестве ходов нужно использовать сочетания букв \"abcdefg\" и цифр от 0 до 6");
 
             //Используя вспомогательный класс, задаем размещение кораблям
             for(Ship shipToSet : shipsList){
-                ArrayList<String> newLocation = helper.placeDotCom(3); //Изменить название метода
+                ArrayList<String> newLocation = helper.placeShip(3);
                 shipToSet.setLocationCells(newLocation);
             }
         }
@@ -54,9 +55,9 @@ public class Game {
         }
         private void finishGame(){
             System.out.println("УРА!!! Все корабли потоплены.");
-            if(numOfGuess<=18){
+            if(numOfGuess<=24){
                 System.out.println("Это заняло у Вас всего "+numOfGuess+" попыток.");
-                System.out.println("Вы успели затопить корабли, до того как они разрушат вашу базу.");
+                System.out.println("Вы успели затопить корабли, до того как они разрушили вашу базу.");
             }else{
                 System.out.println("Однако, это заняло у вас довольно много времени. "+numOfGuess+" попыток.");
                 System.out.println("Ваша база лежит в руинах. :'(");
