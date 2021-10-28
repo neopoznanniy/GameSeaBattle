@@ -4,10 +4,10 @@ import java.util.*;
 public class GameHelper {
     private static final String alphabet = "abcdefg";
     private int gridLength = 7;
-    private int gridSize = 49;
+    private int gridSize = 47;
     private int[] grid = new int[gridSize];
     private int comCount = 0;
-
+    //принимаем пользовательский ввод
     public String getUserInput(String promt){
         String inputLine = null;
         System.out.println(promt+" ");
@@ -20,12 +20,11 @@ public class GameHelper {
         }
         return inputLine.toLowerCase();
     }
-
-    public ArrayList<String> placeShip(int comSize){
+    //Устанавливаем координаты кораблям
+    public ArrayList<String> placeShip(int shipSize){
         ArrayList<String> alphaCells = new ArrayList<String>();
-        String[] alphacoords = new String[comSize];
         String temp = null;
-        int[] coords = new int[comSize];
+        int[] coords = new int[shipSize];
         int attemts = 0;
         boolean success = false;
         int location = 0;
@@ -38,10 +37,10 @@ public class GameHelper {
 
         while(!success & attemts++<200){
             location = (int)(Math.random()*gridSize);
-            //System.out.println("пробуем " + location);
+//            System.out.println("пробуем " + location);
             int x = 0;
             success = true;
-            while(success && x<comSize){
+            while(success && x<shipSize){
                 if(grid[location]==0){
                     coords[x++] = location;
                     location += incr;
@@ -49,25 +48,26 @@ public class GameHelper {
                         success=false;
                     }
                 }else{
-                    //System.out.println("используется " +location);
+//                    System.out.println("используется " +location);
                     success = false;
                 }
             }
         }
+
         int x = 0;
         int row =0;
         int column = 0;
-        //System.out.println("\n");
-        while(x<comSize){
+//        System.out.println("\n");
+        while(x<shipSize){
             grid[coords[x]]=1;
             row = (int)(coords[x]/gridLength);
             column = coords[x]%gridLength;
             temp = String.valueOf(alphabet.charAt(column));
-            alphaCells.add(temp.concat(Integer.toString(row)));
+            alphaCells.add(temp.concat(Integer.toString(row+1)));
             x++;
-            //System.out.println(" coord"+x+" = "+alphaCells.get(x-1));
+//          System.out.println(" coord"+x+" = "+alphaCells.get(x-1));
         }
-        //System.out.println("\n");
+        System.out.println("\n");
         return alphaCells;
     }
 }

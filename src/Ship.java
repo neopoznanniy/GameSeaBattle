@@ -5,7 +5,11 @@ public class Ship {
     private ArrayList<String> locationCells;
     private String name;
 
-    String checkYourSelf(String userInput){
+    public Ship(String name){ this.name = name; }
+
+    public void setLocationCells(ArrayList<String> loc){ this.locationCells = loc; }
+    //проверяем ход пользователя на попадание
+    public String checkYourSelf(String userInput){
         String result = "Мимо";
         int index = locationCells.indexOf(userInput);
         if(index>=0){
@@ -19,9 +23,4 @@ public class Ship {
         }
         return result;
     }
-
-    public void setLocationCells(ArrayList<String> loc){
-        this.locationCells = loc;
-    }
-    public void setName (String n) {name = n;}
 }
